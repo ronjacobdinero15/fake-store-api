@@ -1,0 +1,48 @@
+.container {
+  margin: 0 30px;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.description header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.description .quantity {
+  width: 120px;
+}
+
+.description .quantity button,
+.description .addToCart {
+  font-weight: bold;
+  color: white;
+  background-color: var(--color-light--2);
+  border: none;
+  padding: 5px 10px;
+}
+
+.description span {
+  padding: 0 10px;
+}
+
+.description .category {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+  text-transform: capitalize;
+}

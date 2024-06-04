@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root {
+  --color-light--2: #353a40;
+}
+
+body {
+  color: var(--color-light--2);
+  margin: 0 50px;
+  margin-bottom: 50px;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  color: var(--color-light--2);
+  font-family: 'Lato', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}

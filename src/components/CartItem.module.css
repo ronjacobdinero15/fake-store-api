@@ -1,0 +1,24 @@
+.productContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.productContainer span {
+  padding: 0 10px;
+}
+
+.img {
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  width: 100px;
+  height: 100px;
+}
+
+.removeItem {
+  position: absolute;
+  top: 112px;
+  right: 300px;
+  cursor: pointer;
+}
