@@ -1,13 +1,23 @@
-import { Link } from 'react-router-dom'
-import { useProducts } from '../contexts/ProductsContext'
+import { Link, useLocation } from 'react-router-dom'
+import { useProducts } from '../../contexts/ProductsContext'
 import styles from './PageNav.module.css'
 
 function NavBar() {
-  const { totalItems } = useProducts()
+  const location = useLocation()
+  const { searchQuery, setSearchQuery, totalItems } = useProducts()
+  const regex = /\/product\/\d+\/?\d*/
+
+  function handleSearchQuery(searchQuery) {
+    setSearchQuery(searchQuery)
+  }
+
+  function handleClear() {
+    setSearchQuery('')
+  }
 
   return (
     <nav className={styles.nav}>
-      <Link to="/">
+      <Link to="/" onClick={handleClear}>
         <header>
           <img
             src="https://fakestoreapi.com/icons/logo.png"
@@ -16,6 +26,50 @@ function NavBar() {
           <h3>Fake Store API</h3>
         </header>
       </Link>
+
+      {location.pathname !== '/cart' && !regex.test(location.pathname) && (
+        <div className={styles.searchContainer}>
+          <input
+            className={styles.search}
+            type="text"
+            placeholder="Search a product"
+            value={searchQuery}
+            onChange={e => handleSearchQuery(e.target.value)}
+          />
+          <svg
+            width="30px"
+            height="30px"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M5.5 11.1455C5.49956 8.21437 7.56975 5.69108 10.4445 5.11883C13.3193 4.54659 16.198 6.08477 17.32 8.79267C18.4421 11.5006 17.495 14.624 15.058 16.2528C12.621 17.8815 9.37287 17.562 7.3 15.4895C6.14763 14.3376 5.50014 12.775 5.5 11.1455Z"
+                stroke="#353a40"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+              <path
+                d="M15.989 15.4905L19.5 19.0015"
+                stroke="#353a40"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </div>
+      )}
+
       <ul className={styles.ul}>
         <li>
           <Link to="/cart">

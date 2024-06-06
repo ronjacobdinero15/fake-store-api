@@ -21,6 +21,26 @@
   height: 40px;
 }
 
+.searchContainer {
+  position: relative;
+}
+
+.searchContainer svg {
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
+}
+
+.search {
+  height: 40px;
+  width: 40vw;
+  font-size: 1rem;
+  padding-left: 20px;
+  padding-right: 50px;
+  border: 1px solid #353a40;
+  border-radius: 20px;
+}
+
 .ul {
   list-style: none;
 }

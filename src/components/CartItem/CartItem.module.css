@@ -1,5 +1,4 @@
 .productContainer {
-  position: relative;
   display: flex;
   align-items: center;
   gap: 80px;
@@ -16,9 +15,13 @@
   height: 100px;
 }
 
+.selection {
+  position: relative;
+}
+
 .removeItem {
   position: absolute;
-  top: 112px;
-  right: 300px;
+  bottom: 20px;
+  left: 150px;
   cursor: pointer;
 }

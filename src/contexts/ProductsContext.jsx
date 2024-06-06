@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-
 const ProductsContext = createContext()
 
 function ProductsProvider({ children }) {
@@ -8,8 +7,18 @@ function ProductsProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState({})
   const [quantity, setQuantity] = useState(1)
+  const [searchQuery, setSearchQuery] = useState('')
 
   const totalItems = cartedProducts.reduce((acc, cur) => acc + cur.quantity, 0)
+
+  const searchedPosts =
+    searchQuery.length > 0
+      ? products.filter(post =>
+          `${post.title} ${post.body}`
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase())
+        )
+      : products
 
   useEffect(function () {
     async function getData() {
@@ -91,10 +100,14 @@ function ProductsProvider({ children }) {
         totalItems,
         getProduct,
         selectedProduct,
+        setSelectedProduct,
         quantity,
         setQuantity,
         handleReduceItem,
         handleAddItem,
+        searchQuery,
+        setSearchQuery,
+        searchedPosts,
       }}
     >
       {children}

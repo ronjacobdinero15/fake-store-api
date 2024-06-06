@@ -1,17 +1,27 @@
+import { useEffect } from 'react'
 import { useProducts } from '../contexts/ProductsContext'
-import PageNav from '../components/PageNav'
-import CartItem from '../components/CartItem'
-import EmptyCart from '../components/EmptyCart'
-import Footer from '../components/Footer'
+import PageNav from '../components/PageNav/PageNav'
+import CartItem from '../components/CartItem/CartItem'
+import EmptyCart from '../components/EmptyCart/EmptyCart'
+import Footer from '../components/Footer/Footer'
 import styles from './Cart.module.css'
 
 function Cart() {
-  const { cartedProducts: products } = useProducts()
+  const { cartedProducts: products, setSearchQuery } = useProducts()
 
   const subTotal = products.reduce(
     (prev, cur) => prev + cur.quantity * cur.price,
     0
   )
+
+  useEffect(function () {
+    setSearchQuery('')
+    document.title = `Fake Store | Cart`
+
+    return function () {
+      document.title = 'Fake Store'
+    }
+  }, [])
 
   return (
     <div>

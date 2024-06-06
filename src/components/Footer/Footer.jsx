@@ -1,5 +1,5 @@
-import { useProducts } from '../contexts/ProductsContext'
-import Button from './Button'
+import { useProducts } from '../../contexts/ProductsContext'
+import Button from '../Button/Button'
 import styles from './Footer.module.css'
 
 const DEFAULT_SHIPPING_FEE = 10

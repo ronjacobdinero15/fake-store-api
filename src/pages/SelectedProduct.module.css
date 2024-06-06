@@ -12,6 +12,7 @@
 }
 
 .description {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,14 +21,19 @@
 .description header {
   display: flex;
   justify-content: space-between;
+  gap: 40px;
 }
 
-.description .quantity {
+.description h2 {
+  width: 50vw;
+}
+
+.quantity {
   width: 120px;
 }
 
-.description .quantity button,
-.description .addToCart {
+.quantity button,
+.addToCart {
   font-weight: bold;
   color: white;
   background-color: var(--color-light--2);
@@ -39,10 +45,21 @@
   padding: 0 10px;
 }
 
-.description .category {
+.category {
+  position: absolute;
+  left: 740px;
+  top: 13px;
   display: flex;
   align-items: center;
-  justify-content: end;
   gap: 10px;
   text-transform: capitalize;
+}
+
+.category p {
+  width: 200px;
+}
+
+.descriptionText {
+  width: 65vw !important;
+  text-align: justify !important;
 }

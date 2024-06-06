@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useProducts } from '../contexts/ProductsContext'
-import PageNav from '../components/PageNav'
-import Button from '../components/Button'
-import Spinner from '../components/Spinner'
+import PageNav from '../components/PageNav/PageNav'
+import Button from '../components/Button/Button'
+import Spinner from '../components/Spinner/Spinner'
 import styles from './SelectedProduct.module.css'
 
 function SelectedProduct() {
@@ -11,13 +11,17 @@ function SelectedProduct() {
     getProduct,
     isLoading,
     selectedProduct,
+    setSelectedProduct,
     quantity,
     setQuantity,
     setCartedProducts,
     handleReduceItem,
     handleAddItem,
+    setSearchQuery,
   } = useProducts()
+
   const { id } = useParams()
+  const title = selectedProduct.title
 
   function handleAddToCart(curProduct) {
     setCartedProducts(products => {
@@ -39,10 +43,24 @@ function SelectedProduct() {
 
   useEffect(
     function () {
+      setSearchQuery('')
       getProduct(id)
       setQuantity(1)
     },
     [id]
+  )
+
+  useEffect(
+    function () {
+      if (!title) return
+      document.title = `Fake Store | ${title}`
+
+      return function () {
+        setSelectedProduct({})
+        document.title = 'Fake Store'
+      }
+    },
+    [title, setSelectedProduct]
   )
 
   return (
@@ -61,7 +79,7 @@ function SelectedProduct() {
           <div className={styles.description}>
             <header>
               <h2>{selectedProduct.title}</h2>
-              <p className={styles.category}>
+              <span className={styles.category}>
                 <svg
                   width="30px"
                   height="30px"
@@ -96,13 +114,13 @@ function SelectedProduct() {
                     ></path>
                   </g>
                 </svg>
-                {selectedProduct.category}
-              </p>
+                <p>{selectedProduct.category}</p>
+              </span>
             </header>
             <h3>${selectedProduct.price}</h3>
             <div className={styles.quantity}>
               <Button type="quantity" onClick={handleReduceItem}>
-                -
+                –
               </Button>
               <span>{quantity}</span>
               <Button type="quantity" onClick={handleAddItem}>
@@ -115,7 +133,9 @@ function SelectedProduct() {
             >
               Add to cart
             </Button>
-            <p>{selectedProduct.description}.</p>
+            <p className={styles.descriptionText}>
+              {selectedProduct.description}.
+            </p>
           </div>
         </main>
       )}

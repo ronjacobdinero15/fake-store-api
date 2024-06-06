@@ -1,7 +1,7 @@
-import { useProducts } from '../contexts/ProductsContext'
+import { useProducts } from '../../contexts/ProductsContext'
 import { Link } from 'react-router-dom'
-import Button from './Button'
-import truncateText from '../utils/truncateText'
+import Button from '../Button/Button'
+import truncateText from '../../utils/truncateText'
 import styles from './Product.module.css'
 
 function Product({ product }) {

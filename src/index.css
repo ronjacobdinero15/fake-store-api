@@ -21,3 +21,11 @@ body {
 button {
   cursor: pointer;
 }
+img {
+  -webkit-user-select: none; /* Disable selection in WebKit browsers */
+  -moz-user-select: none; /* Disable selection in Firefox */
+  -ms-user-select: none; /* Disable selection in Internet Explorer/Edge */
+  user-select: none; /* Disable selection in modern browsers */
+  -webkit-user-drag: none; /* Disable dragging in WebKit browsers */
+  user-drag: none; /* Disable dragging in other browsers */
+}

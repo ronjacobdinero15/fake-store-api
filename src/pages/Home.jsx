@@ -1,11 +1,11 @@
 import { useProducts } from '../contexts/ProductsContext'
-import PageNav from '../components/PageNav'
-import Spinner from '../components/Spinner'
-import Product from '../components/Product'
+import PageNav from '../components/PageNav/PageNav'
+import Spinner from '../components/Spinner/Spinner'
+import Product from '../components/Product/Product'
 import styles from './Home.module.css'
 
 function Home() {
-  const { products, isLoading } = useProducts()
+  const { products, isLoading, searchedPosts } = useProducts()
 
   if (isLoading) return <Spinner />
 
@@ -14,9 +14,13 @@ function Home() {
       <PageNav />
 
       <main className={styles.productContainer}>
-        {products.map(product => (
-          <Product product={product} key={product.id} />
-        ))}
+        {searchedPosts
+          ? searchedPosts.map(product => (
+              <Product product={product} key={product.id} />
+            ))
+          : products.map(product => (
+              <Product product={product} key={product.id} />
+            ))}
       </main>
     </div>
   )
