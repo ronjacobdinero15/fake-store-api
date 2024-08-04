@@ -1,0 +1,32 @@
+.productContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 90dvh;
+  align-items: center;
+}
+
+.productImg {
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  width: 25dvw;
+  place-self: center;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.cart {
+  background: #000;
+  color: #fff;
+  border: none;
+  width: 100px;
+  padding: 10px;
+  cursor: pointer;
+}

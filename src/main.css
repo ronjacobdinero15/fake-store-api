@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+}
+
+body {
+  margin: 10px 40px;
+}
+
+img {
+  -webkit-user-select: none; /* Disable selection in WebKit browsers */
+  -moz-user-select: none; /* Disable selection in Firefox */
+  -ms-user-select: none; /* Disable selection in Internet Explorer/Edge */
+  user-select: none; /* Disable selection in modern browsers */
+  -webkit-user-drag: none; /* Disable dragging in WebKit browsers */
+  user-drag: none; /* Disable dragging in other browsers */
+}

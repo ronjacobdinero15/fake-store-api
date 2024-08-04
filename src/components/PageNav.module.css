@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5dvh;
+}
+
+.search {
+  flex-basis: 500px;
+  min-width: 250px;
+  height: 30px;
+  border: 0.5px solid rgb(171, 171, 171);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.search::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.search:focus {
+  border: 1px solid rgb(255, 0, 0);
+  outline: none;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav li a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav :global(.active) {
+  color: red;
+}
